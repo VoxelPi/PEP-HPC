@@ -111,10 +111,18 @@ namespace ASC_HPC
 
   inline SIMD<mask64,4> operator>= (SIMD<int64_t,4> a , SIMD<int64_t,4> b)
   { // there is no a>=b, so we return !(b>a)
-    return  _mm256_xor_si256(_mm256_cmpgt_epi64(b.Val(),a.Val()),_mm256_set1_epi32(-1)); }
+    return  _mm256_xor_si256(_mm256_cmpgt_epi64(b.Val(),a.Val()), _mm256_set1_epi32(-1)); }
   
   inline auto operator>= (SIMD<double,4> a, SIMD<double,4> b)
   { return SIMD<mask64,4>(_mm256_cmp_pd (a.Val(), b.Val(), _CMP_GE_OQ)); }
+
+  inline SIMD<mask64,4> operator> (SIMD<int64_t,4> a , SIMD<int64_t,4> b)
+  {
+    return  _mm256_cmpgt_epi64(a.Val(), b.Val());
+  }
+  
+  inline auto operator> (SIMD<double,4> a, SIMD<double,4> b)
+  { return SIMD<mask64,4>(_mm256_cmp_pd (a.Val(), b.Val(), _CMP_GT_OQ)); }
   
 
   
