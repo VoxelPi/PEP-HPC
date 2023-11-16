@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.16)
 project(ASC_HPC)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -10,6 +10,10 @@ include_directories(src concurrentqueue)
 
 add_executable (demo_tasks demos/demo_tasks.cc 
                 src/taskmanager.cc src/timer.cc)
+
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+target_link_libraries(demo_tasks PRIVATE Threads::Threads)
                 
 target_sources (demo_tasks PUBLIC src/taskmanager.h src/timer.h)
 

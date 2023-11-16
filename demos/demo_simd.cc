@@ -48,7 +48,7 @@ SIMD<double,2> TestHSum (SIMD<double,4> a, SIMD<double,4> b)
 int main()
 {
   SIMD<double,4> a(1.,2.,3.,4.);
-  SIMD<double,4> b(1.0);
+  SIMD<double,4> b(-1.0);
   
   cout << "a = " << a << endl;
   cout << "b = " << b << endl;
@@ -57,11 +57,10 @@ int main()
   cout << "HSum(a) = " << HSum(a) << endl;
   cout << "HSum(a,b) = " << HSum(a,b) << endl;
 
-  
   auto sequ = IndexSequence<int64_t, 4>();
   cout << "sequ = " << sequ << endl;
-  auto mask = (2 >= sequ);
-  cout << "2 >= " << sequ << " = " << mask << endl;
+  auto mask = (2 > sequ);
+  cout << "2 > " << sequ << " = " << mask << endl;
 
   {
     double a[] = { 10, 10, 10, 10 };
@@ -69,6 +68,15 @@ int main()
     cout << "sa = " << sa << endl;
   }
 
-  cout << "Select(mask, a, b) = " << Select(mask, a,b) << endl;
-  
+  cout << "Select(mask, a, b) = " << Select(mask, a, b) << endl;
+
+  // {
+  //   SIMD<double,4> a(1.,2.,3.,4.);
+  //   SIMD<double,4> b(1.0);
+  //   double mem[4] = { 10, 11, 12, 13 };
+  //   SIMD<double,4> c(&mem[0]);
+  //   auto d = a*b+c; 
+
+  //   std::cout << "a = " << a << std::endl;
+  // }
 }
