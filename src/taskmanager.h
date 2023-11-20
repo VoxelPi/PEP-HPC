@@ -4,7 +4,7 @@
 #include<functional>
 
 
-namespace ASC_HPC
+namespace pep::hpc
 {
   
   void StartWorkers(int num);

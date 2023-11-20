@@ -5,7 +5,7 @@
 #include <taskmanager.h>
 #include <timer.h>
 
-using namespace ASC_HPC;
+using namespace pep::hpc;
 using std::cout, std::endl;
 
 

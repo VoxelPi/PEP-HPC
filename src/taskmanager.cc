@@ -7,7 +7,7 @@
 #include "timer.h"
 
 
-namespace ASC_HPC
+namespace pep::hpc
 {
 
   class Task
